@@ -1,0 +1,1062 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pratishtha SV | ECE Portfolio</title>
+
+  <style>
+    :root {
+      --bg: #09090f;
+      --card: #14141f;
+      --border: #29283a;
+      --text: #f4f2ff;
+      --muted: #a09fb9;
+      --lavender: #7863ff;
+      --light lavender: #a18cff;
+      --green: #2ce0a2;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 100px;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -1;
+      background-image:
+        linear-gradient(#ffffff05 1px, transparent 1px),
+        linear-gradient(90deg, #ffffff05 1px, transparent 1px),
+        radial-gradient(circle at 80% 10%, #7863ff13, transparent 35%);
+      background-size: 64px 64px, 64px 64px, auto;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: min(1120px, 90%);
+      margin: auto;
+    }
+
+    /* NAVIGATION */
+
+    .navbar {
+      position: fixed;
+      z-index: 100;
+      top: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      padding: 7px;
+      max-width: 96%;
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      background: #10101beF;
+      backdrop-filter: blur(16px);
+    }
+
+    .navbar a {
+      color: var(--muted);
+      font-size: 14px;
+      padding: 8px 13px;
+      white-space: nowrap;
+      border-radius: 30px;
+      transition: .25s;
+    }
+
+    .navbar a:hover,
+    .navbar a.active {
+      color: var(--light-lavender);
+    }
+
+    .navbar .contact-link {
+      border: 1px solid #443779;
+      color: var(--light-lavender);
+    }
+
+    /* COMMON SECTIONS */
+
+    section {
+      padding: 105px 0;
+      scroll-margin-top: 70px;
+    }
+
+    .label {
+      color: var(--light-lavender);
+      font-family: monospace;
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      font-size: clamp(32px, 5vw, 48px);
+      letter-spacing: -2px;
+      line-height: 1.2;
+      margin: 12px 0 38px;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 17px;
+      transition: .3s;
+    }
+
+    .card:hover {
+      border-color: #6352ba;
+      transform: translateY(-3px);
+    }
+
+    /* HERO */
+
+    #home {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 145px;
+    }
+
+    .hero-content {
+      max-width: 760px;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 16px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      border-radius: 50px;
+      color: var(--muted);
+      font: 12px monospace;
+      letter-spacing: 1px;
+    }
+
+    .dot {
+      height: 8px;
+      width: 8px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 12px var(--green);
+    }
+
+    h1 {
+      margin: 35px 0 18px;
+      font-size: clamp(44px, 8vw, 88px);
+      line-height: 1.1;
+      letter-spacing: -5px;
+    }
+
+    .gradient {
+      color: var(--light-lavender);
+    }
+
+    .hero-subtitle {
+      color: var(--muted);
+      font-size: clamp(18px, 2.5vw, 24px);
+      margin-bottom: 25px;
+    }
+
+    .hero-description {
+      max-width: 570px;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 32px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 27px;
+      border-radius: 40px;
+      font-weight: bold;
+      transition: .3s;
+    }
+
+    .btn-primary {
+      background: var(--lavender);
+      color: white;
+      box-shadow: 0 5px 25px #7863ff30;
+    }
+
+    .btn-primary:hover {
+      background: #9180ff;
+      transform: translateY(-3px);
+    }
+
+    .btn-secondary {
+      border: 1px solid var(--border);
+      color: var(--muted);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--lavender);
+      color: white;
+    }
+
+    .scroll {
+      margin-top: 65px;
+      color: #666580;
+      font: 11px monospace;
+      letter-spacing: 3px;
+    }
+
+    /* ABOUT */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 55px;
+      align-items: start;
+    }
+
+    .about-text p {
+      margin-bottom: 22px;
+      color: var(--muted);
+    }
+
+    .about-text .lead {
+      color: var(--text);
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .info-list {
+      display: grid;
+      gap: 16px;
+    }
+
+    .info-card {
+      padding: 22px;
+      display: flex;
+      gap: 18px;
+      align-items: center;
+    }
+
+    .icon {
+      font-size: 25px;
+    }
+
+    .mini-label {
+      color: #73718f;
+      font: 11px monospace;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+
+    .info-value {
+      color: #bcbadd;
+    }
+
+    /* SKILLS */
+
+    .notice {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--lavender);
+      border-radius: 14px;
+      padding: 22px;
+      color: var(--muted);
+      margin-bottom: 30px;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .skill-card {
+      padding: 25px;
+      min-height: 165px;
+    }
+
+    .skill-card h3 {
+      margin: 8px 0;
+      font-size: 17px;
+    }
+
+    .skill-card p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* PROJECTS */
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .project-image {
+      height: 170px;
+      display: grid;
+      place-items: center;
+      font-size: 50px;
+      background: linear-gradient(135deg, #201d3b, #11111a);
+      border-radius: 17px 17px 0 0;
+    }
+
+    .project-body {
+      padding: 23px;
+    }
+
+    .tag {
+      color: var(--light-purple);
+      font: 11px monospace;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .project-body h3 {
+      margin: 10px 0;
+    }
+
+    .project-body p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .project-links {
+      margin-top: 18px;
+      color: var(--light-purple);
+      font-size: 13px;
+    }
+
+    /* CERTIFICATIONS */
+
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .cert-card {
+      padding: 23px;
+      min-height: 175px;
+    }
+
+    .cert-card h3 {
+      font-size: 16px;
+      margin: 12px 0 7px;
+    }
+
+    .cert-card p {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* EDUCATION */
+
+    .journey-intro {
+      color: var(--muted);
+      margin-top: -20px;
+      margin-bottom: 40px;
+    }
+
+    .timeline {
+      max-width: 900px;
+      margin: auto;
+      position: relative;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 20px;
+      top: 20px;
+      bottom: 35px;
+      width: 1px;
+      background: #51418c;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 45px 100px 1fr;
+      gap: 20px;
+      padding-bottom: 35px;
+      position: relative;
+    }
+
+    .timeline-dot {
+      height: 14px;
+      width: 14px;
+      background: var(--lavender);
+      border-radius: 50%;
+      margin: 9px 0 0 14px;
+      box-shadow: 0 0 15px #7863ff55;
+      z-index: 1;
+    }
+
+    .school-logo {
+      width: 95px;
+      height: 95px;
+      border: 4px solid #c9bfff;
+      background: #f7f5ff;
+      color: #282044;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: 33px;
+    }
+
+    .timeline-content {
+      padding: 3px 0 25px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .timeline-content h3 {
+      margin: 12px 0 5px;
+    }
+
+    .timeline-content p {
+      color: var(--muted);
+      margin-top: 14px;
+    }
+
+    .pill {
+      color: var(--light-lavender);
+      border: 1px solid #51418c;
+      border-radius: 30px;
+      padding: 4px 10px;
+      font: 11px monospace;
+      margin-left: 8px;
+    }
+
+    .location {
+      color: #777591;
+      font-size: 13px;
+    }
+
+    /* CONTACT */
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 60px;
+    }
+
+    .contact-intro p {
+      color: var(--muted);
+      max-width: 380px;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 17px;
+    }
+
+    .contact-card {
+      padding: 27px;
+      display: flex;
+      gap: 18px;
+      align-items: center;
+    }
+
+    .contact-card h3 {
+      color: #777591;
+      font: 11px monospace;
+      letter-spacing: 2px;
+      margin-bottom: 6px;
+    }
+
+    .contact-card a {
+      color: var(--light-purple);
+      font-weight: bold;
+      overflow-wrap: anywhere;
+    }
+
+    .contact-card .whatsapp {
+      color: var(--green);
+    }
+
+    .copy-btn {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      border-radius: 8px;
+      padding: 5px 10px;
+      cursor: pointer;
+      margin-left: 8px;
+    }
+
+    .copy-btn:hover {
+      border-color: var(--lavender);
+    }
+
+    .small-note {
+      border-left: 1px solid var(--border);
+      padding: 15px 20px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      border-top: 1px solid var(--border);
+      color: #777591;
+      font-size: 13px;
+    }
+
+    /* ANIMATION */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity .7s, transform .7s;
+    }
+
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* MOBILE RESPONSIVE */
+
+    @media (max-width: 850px) {
+      .about-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .skills-grid,
+      .project-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .cert-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .navbar {
+        gap: 0;
+        overflow-x: auto;
+        justify-content: flex-start;
+      }
+
+      .navbar a {
+        padding: 8px 10px;
+        font-size: 12px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .container {
+        width: 91%;
+      }
+
+      section {
+        padding: 75px 0;
+      }
+
+      h1 {
+        letter-spacing: -2px;
+      }
+
+      .skills-grid,
+      .project-grid,
+      .cert-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline-item {
+        grid-template-columns: 30px 1fr;
+        gap: 12px;
+      }
+
+      .school-logo {
+        display: none;
+      }
+
+      .timeline-content {
+        grid-column: 2;
+      }
+
+      .timeline::before {
+        left: 13px;
+      }
+
+      .timeline-dot {
+        margin-left: 7px;
+      }
+
+      .copy-btn {
+        display: block;
+        margin: 9px 0 0;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVIGATION BAR -->
+  <nav class="navbar">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#certifications">Certifications</a>
+    <a href="#journey">Journey</a>
+    <a href="#contact" class="contact-link">Contact</a>
+  </nav>
+
+  <!-- HOME SECTION -->
+  <section id="home">
+    <div class="container hero-content reveal">
+      <div class="status">
+        <span class="dot"></span>
+        ECE Student · Currently Learning
+      </div>
+
+      <h1>Hi, I'm <span class="gradient">Pratishtha SV</span></h1>
+
+      <p class="hero-subtitle">
+        Electronics and Communication Engineering Student
+      </p>
+
+      <p class="hero-description">
+        Passionate about technology, engineering, and innovation —
+        constantly learning, experimenting, and growing.
+        I believe in building a strong foundation before anything else.
+      </p>
+
+      <div class="buttons">
+        <a href="#contact" class="btn btn-primary">Contact Me</a>
+        <a href="#about" class="btn btn-secondary">Learn More</a>
+      </div>
+
+      <div class="scroll">—— &nbsp; SCROLL</div>
+    </div>
+  </section>
+
+  <!-- ABOUT SECTION -->
+  <section id="about">
+    <div class="container">
+      <div class="label">About Me</div>
+      <h2>Who I Am</h2>
+
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <p class="lead">
+            I am an Electronics and Communication Engineering student,
+            driven by curiosity and a genuine interest in how technology
+            shapes the world around us.
+          </p>
+
+          <p>
+            My academic journey has introduced me to the fundamentals
+            of electronics, communication systems, and modern engineering.
+            I believe every concept learned today becomes a tool for
+            solving tomorrow's problems.
+          </p>
+
+          <p>
+            Beyond the classroom, I am interested in embedded technology,
+            programming, artificial intelligence, and the connection
+            between hardware and software.
+          </p>
+
+          <p>
+            My goal is to develop practical engineering skills, build
+            meaningful projects, and contribute to technology and innovation.
+          </p>
+        </div>
+
+        <div class="info-list reveal">
+          <div class="card info-card">
+            <span class="icon">🎓</span>
+            <div>
+              <div class="mini-label">Degree</div>
+              <div class="info-value">
+                B.E. Electronics & Communication Engineering
+              </div>
+            </div>
+          </div>
+
+          <div class="card info-card">
+            <span class="icon">📘</span>
+            <div>
+              <div class="mini-label">Status</div>
+              <div class="info-value">Currently Pursuing</div>
+            </div>
+          </div>
+
+          <div class="card info-card">
+            <span class="icon">⚡</span>
+            <div>
+              <div class="mini-label">Interests</div>
+              <div class="info-value">
+                Electronics · Embedded Systems · AI · Programming
+              </div>
+            </div>
+          </div>
+
+          <div class="card info-card">
+            <span class="icon">🔬</span>
+            <div>
+              <div class="mini-label">Approach</div>
+              <div class="info-value">
+                Learn Deeply · Build Honestly · Grow Continuously
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS SECTION -->
+  <section id="skills">
+    <div class="container">
+      <div class="label">Skills</div>
+      <h2>Technical Skills</h2>
+
+      <div class="notice">
+        🛠️ I am continuously developing my technical skills through
+        coursework, practice, and hands-on engineering projects.
+      </div>
+
+      
+
+        <div class="card skill-card reveal">
+          <span class="icon">💻</span>
+          <h3>Programming</h3>
+          <p>Add the programming languages you know, such as C or Python.</p>
+        </div>
+
+        <div class="card skill-card reveal">
+          <span class="icon">📡</span>
+          <h3>Communication</h3>
+          <p>Learning signals, systems and communication concepts.</p>
+        </div>
+
+        <div class="card skill-card reveal">
+          <span class="icon">⚙️</span>
+          <h3>Embedded Systems</h3>
+          <p>Microcontrollers, sensors and hardware-software integration.</p>
+        </div>
+
+        <div class="card skill-card reveal">
+          <span class="icon">🧪</span>
+          <h3>Simulation Tools</h3>
+          <p>Practice with circuit simulation and engineering tools.</p>
+        </div>
+
+        <div class="card skill-card reveal">
+          <span class="icon">🤝</span>
+          <h3>Problem Solving</h3>
+          <p>Analytical thinking, teamwork and continuous learning.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS SECTION -->
+  <section id="projects">
+    <div class="container">
+      <div class="label">Projects</div>
+      <h2>My Work</h2>
+
+      <div class="notice">
+        🚀 These are starter project examples. Replace them with your
+        actual projects, descriptions, and links.
+      </div>
+
+      
+            </p>
+            <div class="project-links">
+              <a href="#contact">Project Details ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card reveal">
+          <div class="project-image">🤖</div>
+          <div class="project-body">
+            <div class="tag">Embedded Systems</div>
+            <h3>Smart Electronics Project</h3>
+            <p>
+              Describe your sensor-based or microcontroller project,
+              the components used and the problem it solves.
+            </p>
+            <div class="project-links">
+              <a href="#contact">Project Details ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card reveal">
+          <div class="project-image">🛡️</div>
+          <div class="project-body">
+            <div class="tag">Innovation</div>
+            <h3>SafeHer.AI</h3>
+            <p>
+              A personal safety prototype concept using a secret-word
+              trigger to alert trusted contacts during an emergency.
+            </p>
+            <div class="project-links">
+              <a href="#contact">Project Details ↗</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS SECTION -->
+  <section id="certifications">
+    <div class="container">
+      <div class="label">Certifications</div>
+      <h2>Credentials</h2>
+
+      <div class="notice">
+        🏅 Add your completed online courses, workshops and certifications
+        here. Replace the sample text with your real credentials.
+      </div>
+
+      <div class="cert-grid">
+        <div class="card cert-card reveal">
+          <span class="icon">📜</span>
+          <div class="mini-label">Organization</div>
+          <h3>Certification Name</h3>
+          <p>Month · Year</p>
+        </div>
+
+        <div class="card cert-card reveal">
+          <span class="icon">📜</span>
+          <div class="mini-label">Organization</div>
+          <h3>Certification Name</h3>
+          <p>Month · Year</p>
+        </div>
+
+        <div class="card cert-card reveal">
+          <span class="icon">📜</span>
+          <div class="mini-label">Organization</div>
+          <h3>Certification Name</h3>
+          <p>Month · Year</p>
+        </div>
+
+        <div class="card cert-card reveal">
+          <span class="icon">📜</span>
+          <div class="mini-label">Organization</div>
+          <h3>Certification Name</h3>
+          <p>Month · Year</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION SECTION -->
+  <section id="journey">
+    <div class="container">
+      <div class="label">Education</div>
+      <h2>My Academic Journey</h2>
+
+      <p class="journey-intro">
+        The path I have walked and the road I am on right now.
+      </p>
+
+      <div class="timeline">
+        <article class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="school-logo">🎓</div>
+
+          <div class="timeline-content">
+            <div class="label">
+              Schooling
+              <span class="pill">Completed</span>
+            </div>
+
+            <h3>SARASWATHI MATRIC HR SEC SCHOOL</h3>
+            <div class="location">📍 URAPAKKAM CHENGALPATTU</div>
+
+            <p>
+              Completed my schooling, building a foundation in science,
+              mathematics and analytical thinking.
+            </p>
+          </div>
+        </article>
+
+        <article class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="school-logo">🏫</div>
+
+          <div class="timeline-content">
+            <div class="label">
+              Undergraduate
+              <span class="pill">In Progress</span>
+            </div>
+
+            <h3>Saveetha Deemed University (SIMATS)</h3>
+            <div class="location">📍 Chennai, Tamil Nadu</div>
+
+            <p>
+              Pursuing a Bachelor of Engineering in Electronics and
+              Communication Engineering, exploring circuits,
+              communication systems and embedded technology.
+            </p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section id="contact">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-intro reveal">
+          <div class="label">Get In Touch</div>
+          <h2>Contact Me</h2>
+          <p>
+            Feel free to reach out for academic discussions,
+            opportunities, collaborations, or just to connect.
+          </p>
+        </div>
+
+        <div class="contact-list reveal">
+          <div class="card contact-card">
+            <span class="icon">✉️</span>
+            <div>
+              <h3>EMAIL</h3>
+              <a href="mailto:pratishthasomi@gamil.com">
+                pratishthasomi@gamil.com
+              </a>
+              <button class="copy-btn"
+                data-copy="pratishthasomi@gamil.com">Copy</button>
+            </div>
+          </div>
+
+          <div class="card contact-card">
+            <span class="icon">💬</span>
+            <div>
+              <h3>WHATSAPP</h3>
+              <a class="whatsapp"
+                href="https://wa.me/9840052507"
+                target="_blank" rel="noopener">
+                +91 9840052507
+              </a>
+              <button class="copy-btn"
+                data-copy="+91 9840052507">Copy</button>
+            </div>
+          </div>
+
+          <div class="small-note">
+            I am a student, so response times may vary.
+            I will get back to you as soon as possible.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Designed and built by Pratishtha SV · <span id="year"></span>
+  </footer>
+
+  <script>
+    // Animate elements when they enter the screen.
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll(".reveal").forEach((element) => {
+      revealObserver.observe(element);
+    });
+
+    // Highlight the navigation link for the current section.
+    const sections = document.querySelectorAll("section[id]");
+    const navLinks = document.querySelectorAll(".navbar a");
+
+    const navObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          navLinks.forEach((link) => {
+            link.classList.toggle(
+              "active",
+              link.getAttribute("href") === "#" + entry.target.id
+            );
+          });
+        }
+      });
+    }, { rootMargin: "-35% 0px -55% 0px" });
+
+    sections.forEach((section) => navObserver.observe(section));
+
+    // Copy email and phone number.
+    document.querySelectorAll(".copy-btn").forEach((button) => {
+      button.addEventListener("click", async () => {
+        try {
+          await navigator.clipboard.writeText(button.dataset.copy);
+          button.textContent = "Copied!";
+        } catch (error) {
+          window.prompt("Copy this text:", button.dataset.copy);
+        }
+
+        setTimeout(() => {
+          button.textContent = "Copy";
+        }, 1500);
+      });
+    });
+
+    // Automatically update the footer year.
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+  </script>
+
+</body>
+</html>
